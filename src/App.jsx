@@ -7,7 +7,8 @@ function App() {
   return (
     <>
 
-      {/* Teste */}
+   {/*    Todo esse texto será comentado deverá
+      em diversas linhas */}
     
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar a classe dark ou light */}
