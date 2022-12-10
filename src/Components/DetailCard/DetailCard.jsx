@@ -4,6 +4,8 @@ import styles from "./DetailCard.module.css";
 
 const DetailCard = () => {
 
+ 
+
   useEffect(() => {
     //Nesse useEffect, você vai fazer um fetch na api passando o 
     //id do dentista que está vindo do react-router e carregar os dados em algum estado
