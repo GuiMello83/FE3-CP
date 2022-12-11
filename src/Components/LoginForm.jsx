@@ -1,4 +1,4 @@
-import styles from "./Form.module.css";
+import styles from "../../src/Components/Form.module.css";
 
 const LoginForm = () => {
   const handleSubmit = (e) => {
@@ -19,7 +19,7 @@ const LoginForm = () => {
         className={`text-center card container ${styles.card}`}
       >
         <div className={`card-body ${styles.CardBody}`}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}> 
             <input
               className={`form-control ${styles.inputSpacing}`}
               placeholder="Login"

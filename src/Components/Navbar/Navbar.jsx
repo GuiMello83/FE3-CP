@@ -1,4 +1,9 @@
+import { useGlobal } from "../../Hooks/Context"
+
 import styles from "./Navbar.module.css";
+
+
+//Hooks
 
 const Navbar = () => {
 

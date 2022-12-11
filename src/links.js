@@ -1,0 +1,1 @@
+export const linkAPI = 'https://dhodonto.ctdprojetos.com.br/'
