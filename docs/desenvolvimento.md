@@ -22,7 +22,7 @@ Se utilizará a versão de React 18.0.2
 As dependências básicas serão:
 * React
 * testing-library
-* react-router-dom
+* react-router-dom - ok - instalada
 * react-dom
 
 ## Recomendações
@@ -31,7 +31,7 @@ Para ajudar a organizar e entregar a tempo, deixamos-lhe uma proposta de workflo
 
 ### Passo 1: Criando Rotas
 
-Importe os componentes relevantes para agrupar o aplicativo e criar o roteamento da página. Não importa que ainda não tenhamos os componentes que irão em cada view, por enquanto você pode deixar apenas um div.
+Importe os componentes relevantes para agrupar o aplicativo e criar o roteamento da página. Não importa que ainda não tenhamos os componentes que irão em cada view, por enquanto você pode deixar apenas um div. - ok
 
 ### Passo 2: Crie componentes para cada rota
 
