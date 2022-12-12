@@ -1,7 +1,25 @@
+import { useEffect } from "react";
+import { Link } from 'react-router-dom';
+
+import { linkAPI } from "../../links"
 import styles from "./Card.module.css";
 
-const Card = () => {
 
+const Card = (props) => {
+
+  /* useEffect(() => {
+
+    fetch('https://dhodonto.ctdprojetos.com.br/dentista').then(
+      response => {
+        response.json().then(
+          data => {
+            setCard(matricula)
+          }
+        )
+      }
+    )
+
+  }, []); */
   return (
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
@@ -13,11 +31,14 @@ const Card = () => {
           alt="doctor placeholder"
         />
         <div className={`card-body ${styles.CardBody}`}>
-          {/* Na linha seguinte o link deverá utilizar a matricula, nome e sobrenome do dentista
-          que vem da API */}
-          <a href={`/dentist/MatriculaDoDentista`}>
-            <h5 className={`card-title ${styles.title}`}>Nome e Sobrenome do dentista</h5>
-          </a>
+        
+            <Link to={`/dentist/${props.dentista.matricula}`}>
+            <h5
+              className={`card-title ${styles.title}`}
+            >{`${props.dentista.nome}`}</h5>
+            </Link>
+            <h6>{props.dentista.matricula}</h6>
+            <Link to="/detail">Detalhes</Link>
         </div>
       </div>
     </>

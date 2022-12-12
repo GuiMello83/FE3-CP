@@ -28,7 +28,7 @@ const Home = () => {
       <h1>Home</h1>
       <div className="card-grid container">
        
-      {dentistaData.map((dentistaCard) => {
+      {dentistaData.map(dentistaCard => {
           return <Card key={dentistaCard.matricula} dentista={dentistaCard} />;
         })}
       </div>

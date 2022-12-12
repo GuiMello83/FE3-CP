@@ -1,20 +1,43 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+
 import ScheduleFormModal from "../ScheduleForm/ScheduleFormModal";
 import styles from "./DetailCard.module.css";
+import { linkAPI } from "../../links";
 
 const DetailCard = (props) => {
 
+  const [dentista, setDentista] = useState({
+    nome:'',
+    sobrenome:'',
+    matricula:'',
+  })
+  const [usuario, setUsuario] = useState('')
  
 
   useEffect(() => {
     //Nesse useEffect, você vai fazer um fetch na api passando o 
     //id do dentista que está vindo do react-router e carregar os dados em algum estado
-  }, []);
+    fetch(`${linkAPI}${"dentista?matricula="}${dentista.matricula}`).then(
+      response =>{
+        response.json().then(
+          data =>{            
+            setDentista.nome(data.nome)
+            setDentista.sobrenome(data.sobrenome)
+            setUsuario(data.usuario.username)
+          }
+        )
+      }
+    )
+  },[]);
+
+
+
   return (
     //As instruções que estão com {''} precisam ser 
     //substituídas com as informações que vem da api
     <>
-      <h1>Detail about Dentist {props.containerData.nome} </h1>
+      <h1>Detalhe do dentista {`: ${dentista.nome}`} </h1>
       <section className="card col-sm-12 col-lg-6 container">
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
@@ -30,12 +53,12 @@ const DetailCard = (props) => {
           </div>
           <div className="col-sm-12 col-lg-6">
             <ul className="list-group">
-              <li className="list-group-item">Nome: {props.containerData.nome}</li>
+              <li className="list-group-item">Nome: {`${dentista.nome}`}</li>
               <li className="list-group-item">
-                Sobrenome: {props.containerData.sobrenome}
+                Sobrenome: {`${dentista.sobrenome}`}
               </li>
               <li className="list-group-item">
-                Usuário: {props.containerData.usuario.username}
+                Usuário: {`${usuario}`}
               </li>
             </ul>
             <div className="text-center">

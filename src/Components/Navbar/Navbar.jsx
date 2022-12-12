@@ -1,6 +1,6 @@
-import { useGlobal } from "../../Hooks/Context"
 
 import styles from "./Navbar.module.css";
+import { Link } from 'react-router-dom';
 
 
 //Hooks
