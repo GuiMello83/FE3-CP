@@ -37,6 +37,25 @@ const LoginForm = () => {
               Send
             </button>
           </form>
+          <section>
+
+                    <h1>{contents.configurationComponent.sectionTitleTheme[currentLanguage]}</h1>
+
+                    <div>
+                        <input type="radio" name="theme" id="light" checked={theme === 'light'} onChange={() => changeTheme('light')} />
+                        <label htmlFor="light">Claro</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="theme" id="dark" checked={theme === 'dark'} onChange={() => changeTheme('dark')} />
+                        <label htmlFor="dark">Escuro</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="theme" />
+                        <label htmlFor="">Alto Contraste</label>
+                    </div>
+                    </section>
         </div>
       </div>
     </>
