@@ -11,7 +11,7 @@ const ScheduleForm = () => {
     //Nesse handlesubmit você deverá usar o preventDefault,
     //obter os dados do formulário e enviá-los no corpo da requisição 
     //para a rota da api que marca a consulta
-    //lembre-se que essa rota precisa de um Bearer Token para funcionar.
+    //lembre-se que essa rota precisa de um Bearer Token para funcionar. dentro headers pra habilitar o autorization
     //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
   };
 
