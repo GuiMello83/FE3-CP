@@ -13,7 +13,7 @@ const Home = () => {
     //Usando o componente <Card />
   useEffect(() => {
 
-  fetch(`${linkAPI}${"dentista"}`).then((response) =>
+  fetch(`${linkAPI}/${"dentista"}`).then((response) =>
   response.json().then((data) => {
     setDentistaData(data);
     

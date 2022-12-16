@@ -1,94 +1,62 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "../../hooks/Context/useToken";
+import styles from "../../Components/Form/Form.module.css";
 
+const LoginForm = () => {
 
-import styles from "../Form/Form.module.css";
-import { linkAPI } from "../../links";
+  const [userName, setUserName] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const { changeToken } = useToken();
+  const navigate = useNavigate();
 
-const LoginForm = () => { 
-
-  const [user, setUser] = useState({
-    name:'',
-    password:'',
-  })
-  const rote = useNavigate()
-  const [status, setStatus ] = useState({
-    type: '',
-    mensagem: ''
-  });
-
-  function validade(){
-    if(user.name.length < 3) return setStatus({type: 'error', mensagem:'Verifique suas informações novamente'})
-  }
 
 
   const handleSubmit = (e) => {
-    //Nesse handlesubmit você deverá usar o preventDefault,
-    //enviar os dados do formulário e enviá-los no corpo da requisição 
-    //para a rota da api que faz o login /auth
-    //lembre-se que essa rota vai retornar um Bearer Token e o mesmo deve ser salvo
-    //no localstorage para ser usado em chamadas futuras
-    //Com tudo ocorrendo corretamente, o usuário deve ser redirecionado a página principal,com react-router
-    //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
-
     e.preventDefault()
 
-    const userData = {
-      username: user.name,
-      password: user.password,
+    const requestHeaders = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
-
-    if(!validade()) return;
-
+    const requestBody = {
+      username: userName,
+      password: userPassword,
+    }
     const requestConfig = {
       method: 'POST',
-      /* headers: requestHeaders, */
-      body: JSON.stringify(userData)
+      headers: requestHeaders,
+      body: JSON.stringify(requestBody)
     }
 
-    fetch(`${linkAPI}auth`, requestConfig).then(
-      response => {
-        
-        if(response.status === 200) {
-          response.json().then(
-            data => {
-              localStorage.setItem('authToken', data.jwt)
-              /* setAuthToken(data.jwt) */
-              setStatus({
-                type: 'success',
-                mensagem: "Usuário autenticado com sucesso"
-              })
-            }
-            
-          )
-          rote('home')
-        } else {
-          setStatus({
-            type: 'error',
-            mensagem: "Erro: Usuário ou senha não conferem"
-          });
-          
-        }
+    fetch('http://dhodonto.ctdprojetos.com.br/auth', requestConfig).then((response) => {
+      console.log(response)
+      if (response.ok) {
+        response.json().then((data) => {
+          changeToken(data.token);
+          navigate('/home');
+          alert('Login realizado com Sucesso!');
+        });
+      } else {
+        alert('senha errada');
       }
-    )
+    });
   };
+
 
   return (
     <>
-      {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
       <div
         className={`text-center card container ${styles.card}`}
       >
-      {status.type === 'success' ? <p style={{ color: "green" }}>{status.mensagem}</p> : ""}
-      {status.type === 'error' ? <p style={{ color: "ff0000" }}>{status.mensagem}</p> : ""}
-
         <div className={`card-body ${styles.CardBody}`}>
-          <form onSubmit={handleSubmit}> 
+          <form onSubmit={handleSubmit}>
             <input
               className={`form-control ${styles.inputSpacing}`}
               placeholder="Login"
               name="login"
+              type="text"
+              onChange={(e) => setUserName(e.target.value)}
               required
             />
             <input
@@ -96,9 +64,12 @@ const LoginForm = () => {
               placeholder="Password"
               name="password"
               type="password"
+              onChange={(e) => setUserPassword(e.target.value)}
               required
             />
-            <button className="btn btn-primary" type="submit">
+            <button
+
+              className="btn btn-primary" type="submit">
               Send
             </button>
           </form>
