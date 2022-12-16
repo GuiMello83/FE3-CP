@@ -1,4 +1,4 @@
-# ctd-fe3-template
+# Trabalho final FE3 - Jorge Silva - Ana Caroline Couto - Guilherme Mello
 
 # Teste Aplicação Odonto
 Exame Final de Frontend III
