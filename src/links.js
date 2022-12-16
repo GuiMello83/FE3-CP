@@ -1,1 +1,1 @@
-export const linkAPI = 'https://dhodonto.ctdprojetos.com.br/'
+export const linkAPI = 'https://dhodonto.ctdprojetos.com.br'

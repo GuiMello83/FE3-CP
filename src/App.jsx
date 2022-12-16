@@ -1,9 +1,11 @@
 
 import { Outlet } from "react-router-dom";
-import Footer from "./Components/Footer";
-import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer/Footer";
+import Navbar from "./Components/Navbar/Navbar";
+import { useTheme } from './hooks/useTheme';
 
 function App() {
+  const { theme } = useTheme();
   return (
     <>
 
@@ -12,7 +14,7 @@ function App() {
     
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar a classe dark ou light */}
-      <div className={`app light}`}>
+      <div className={`${theme} `}>
         <Navbar />
         <main>
           <Outlet />
